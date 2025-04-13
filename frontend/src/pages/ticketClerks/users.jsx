@@ -17,7 +17,7 @@ const usersData = [
     email: "example@email.com",
     phone: "09920000000",
     type: "Type 2",
-    status: "suspended",
+    status: "deactivated",
     lastActive: "2025-02-18",
   },
   {
@@ -62,7 +62,7 @@ const usersData = [
     email: "example@email.com",
     phone: "09920000000",
     type: "Type 2",
-    status: "suspended",
+    status: "deactivated",
     lastActive: "2025-02-18",
   },
   {

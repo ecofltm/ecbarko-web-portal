@@ -25,7 +25,14 @@ import AdminSchedule from '../src/pages/admin/adminSchedule'
 import AdminTC from '../src/pages/admin/adminTicketClerk'
 import AdminSettings from '../src/pages/admin/adminSettings'
 
-// import SuperAdminDashboard from './pages/superAdmin/saDashboard'
+import SuperAdminDashboard from './pages/superAdmin/saDashboard'
+import SuperAdminUsers from './pages/superAdmin/saUsers'
+import SuperAdminEcBarkoCard from './pages/superAdmin/saEcBarkoCard'
+import SuperAdminVehicles from './pages/superAdmin/saVehicles'
+import SuperAdminShedule from './pages/superAdmin/saSchedule'
+import SuperAdminTicketClerk from './pages/superAdmin/saTicketClerk'
+import SuperAdminAdmins from './pages/superAdmin/saAdmins'
+import SuperAdminSettings from './pages/superAdmin/saSettings'
 
 
 export default function App() {
@@ -58,13 +65,22 @@ const disptch=useDispatch()
               <Route path='adminVehicle' element={<AdminVehicles/>}/>
               <Route path='adminSchedule' element={<AdminSchedule/>}/>
               <Route path='adminTicketClerk' element={<AdminTC/>}/>
+              <Route path='adminSettings' element={<AdminSettings/>}/>
 
               </Route>
 
-              {/* <Route path='/superdmin' element={<SuperAdminLayout/>}>
+              <Route path='/super-admin' element={<SuperAdminLayout/>}>
               <Route index element={<SuperAdminDashboard/>}/>
+              <Route path='saUsers' element={<SuperAdminUsers/>}/>
+              <Route path='saEcBarkoCard' element={<SuperAdminEcBarkoCard/>}/>
+              <Route path='saVehicle' element={<SuperAdminVehicles/>}/>
+              <Route path='saSchedule' element={<SuperAdminShedule/>}/>
+              <Route path='saTicketClerk' element={<SuperAdminTicketClerk/>}/>
+              <Route path='saAdmins' element={<SuperAdminAdmins/>}/>
+              <Route path='saSettings' element={<SuperAdminSettings/>}/>
 
-              </Route> */}
+
+              </Route>
 
               {/* <Route path='/' element={<PublicLayouts/>}> */}
               <Route path='login' element={<Login/>}/>
@@ -73,8 +89,6 @@ const disptch=useDispatch()
               {/* </Route> */}
             </Routes>
           </BrowserRouter>
-
-
 
     </>
   )

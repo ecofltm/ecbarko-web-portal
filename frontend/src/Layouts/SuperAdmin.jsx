@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import Sidebar from '../components/admin/Sidebar'
-import Topbar from '../components/admin/Topbar'
+import Sidebar from '../components/superAdmin/Sidebar'
+import Topbar from '../components/superAdmin/Topbar'
 import '../styles/superAdmin-layout.css'
 
 export default function SuperAdminLayout() {

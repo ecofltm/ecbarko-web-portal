@@ -40,6 +40,23 @@
     color: var(--blue);
     pointer-events: unset;
   }
+
+  .ecbarko .head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .ecbarko .head h3 {
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .ecbarko .head .bx {
+    cursor: pointer;
+  }
   
   .ecbarko .card-table {
     margin-top: 36px;
@@ -90,7 +107,7 @@
     background: #1e8e3e;
   }
   
-  .ecbarko .status.suspended {
+  .ecbarko .status.deactivated {
     background: #f31616;
   }
   
@@ -103,5 +120,57 @@
     height: 36px;
     border-radius: 50%;
     object-fit: cover;
+  }
+  
+
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .popup-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .popup-actions button {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .popup-actions button:first-child {
+    background-color: #ccc;
+  }
+  
+  .popup-actions button:last-child {
+    background-color: #1e8e3e;
+    color: white;
+  }
+
+  .popup-actions button.deactivate {
+    background-color: #f31616;
+  }
+  
+  .popup-actions button.activete {
+    background-color: #1e8e3e;
   }
   

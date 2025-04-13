@@ -2,13 +2,13 @@
 @import url('../components/syles/topbar.css');
 
 
-.ticketclerk-layout {
+.admin-layout {
     display: flex;
     height: 100vh;
     width: 100%;
   }
   
-  .ticketclerk-layout .main-content {
+  .admin-layout .main-content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;

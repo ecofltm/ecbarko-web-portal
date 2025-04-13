@@ -63,7 +63,7 @@ export default function Vehicles() {
                   <td>Motorcycle</td>
                   <td>Type 2</td>
                   <td>
-                    <span className="status suspended">suspended</span>
+                    <span className="status deactivated">deactivated</span>
                   </td>
                 </tr>
                 <tr>
@@ -128,7 +128,7 @@ export default function Vehicles() {
                   <td>SUV</td>
                   <td>Type 2</td>
                   <td>
-                    <span className="status suspended">suspended</span>
+                    <span className="status deactivated">deactivated</span>
                   </td>
                 </tr>
                 <tr>

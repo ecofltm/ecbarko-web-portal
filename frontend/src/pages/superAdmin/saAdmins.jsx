@@ -1,58 +1,76 @@
 import { useState } from "react";
-import '../../styles/TicketClerks.css';
+import '../../styles/Admins.css';
 import profile from '../../assets/imgs/profile.png';
 
-export default function TicketClerks() {
+const Admins = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showActivatePopup, setShowActivatePopup] = useState(false);
-  const [selectedAccount, setSelectedAccount] = useState(null);
+  const [selectedAdmin, setSelectedAdmin] = useState(null);
   const [selectedReason, setSelectedReason] = useState("");
 
-  const [accounts, setAccounts] = useState([
-    { name: "Nisha Kumari", id: "TC123", status: "active" },
-    { name: "Rudra Pratap", id: "TC124", status: "active" },
-    { name: "Trisha Norton", id: "TC125", status: "active" },
+  const [adminData, setAdminData] = useState([
+    {
+      name: "Cherish Sarmiento",
+      id: "Admin1",
+      email: "example@email.com",
+      password: "Admin_1",
+      role: "Admin",
+      status: "active"
+    },
+    {
+      name: "Ma. Katrina Lara",
+      id: "Admin2",
+      email: "example@email.com",
+      password: "Admin_2",
+      role: "Admin",
+      status: "active"
+    },
+    {
+      name: "Aliyah Picante",
+      id: "Admin3",
+      email: "example@email.com",
+      password: "Admin_3",
+      role: "Admin",
+      status: "active"
+    },
   ]);
 
   const reasons = ["Other"];
 
   const toggleStatus = (id) => {
-    const account = accounts.find((account) => account.id === id);
-    setSelectedAccount(account);
+    const admin = adminData.find((admin) => admin.id === id);
+    setSelectedAdmin(admin);
 
-    if (account.status === "deactivated") {
-      setShowActivatePopup(true);
-    } else if (account.status === "active") {
+    if (admin.status === "active") {
       setShowPopup(true);
+    } else {
+      setShowActivatePopup(true);
     }
   };
 
   const updateStatus = (id, newStatus) => {
-    setAccounts((prev) =>
-      prev.map((account) => {
-        if (account.id === id) {
-          return { ...account, status: newStatus };
-        }
-        return account;
-      })
+    setAdminData((prev) =>
+      prev.map((admin) =>
+        admin.id === id ? { ...admin, status: newStatus } : admin
+      )
     );
   };
 
-  const handleSuspend = () => {
-    if (selectedAccount && selectedReason) {
-      updateStatus(selectedAccount.id, "deactivated");
+  const handleDeactivate = () => {
+    if (selectedAdmin && selectedReason) {
+      updateStatus(selectedAdmin.id, "deactivated");
       setShowPopup(false);
-      alert(`Account ${selectedAccount.name} deactivated due to ${selectedReason}`);
+      alert(`Admin ${selectedAdmin.name} deactivated due to ${selectedReason}`);
     } else {
-      alert("Please select a reason for suspension.");
+      alert("Please select a reason.");
     }
   };
 
   const handleActivate = () => {
-    if (selectedAccount) {
-      updateStatus(selectedAccount.id, "active");
+    if (selectedAdmin) {
+      updateStatus(selectedAdmin.id, "active");
       setShowActivatePopup(false);
-      alert(`Account ${selectedAccount.name} has been activated.`);
+      alert(`Admin ${selectedAdmin.name} has been activated.`);
     }
   };
 
@@ -61,10 +79,10 @@ export default function TicketClerks() {
       <main>
         <div className="head-title">
           <div className="left">
-            <h1>Ticket Clerks</h1>
+            <h1>Admins</h1>
             <ul className="breadcrumb">
               <li>
-                <a href="#">Ticket Clerks</a>
+                <a href="#" className="active">Admins</a>
               </li>
             </ul>
           </div>
@@ -86,8 +104,8 @@ export default function TicketClerks() {
             <table>
               <thead>
                 <tr>
-                  <th>Ticket Clerk Name</th>
-                  <th>Ticket Clerk ID</th>
+                  <th>Admin Name</th>
+                  <th>Admin ID</th>
                   <th>Email</th>
                   <th>Password</th>
                   <th>Role</th>
@@ -95,18 +113,20 @@ export default function TicketClerks() {
                 </tr>
               </thead>
               <tbody>
-                {accounts.map((account) => (
-                  <tr key={account.id} onClick={() => toggleStatus(account.id)}>
+                {adminData.map((admin) => (
+                  <tr key={admin.id} onClick={() => toggleStatus(admin.id)}>
                     <td>
                       <img src={profile} alt="Profile" />
-                      <p>{account.name}</p>
+                      <p>{admin.name}</p>
                     </td>
-                    <td>{account.id}</td>
-                    <td>example@email.com</td>
-                    <td>{account.id}</td>
-                    <td>Ticket Clerk</td>
+                    <td>{admin.id}</td>
+                    <td>{admin.email}</td>
+                    <td>{admin.password}</td>
+                    <td>{admin.role}</td>
                     <td>
-                      <span className={`status ${account.status}`}>{account.status}</span>
+                      <span className={`status ${admin.status}`}>
+                        {admin.status}
+                      </span>
                     </td>
                   </tr>
                 ))}
@@ -116,10 +136,10 @@ export default function TicketClerks() {
         </div>
       </main>
 
-      {showPopup && selectedAccount && selectedAccount.status === "active" && (
+      {showPopup && selectedAdmin && (
         <div className="popup-overlay">
           <div className="popup-content">
-            <h3>Deactivate {selectedAccount.name}?</h3>
+            <h3>Deactivate {selectedAdmin.name}?</h3>
             <p>Reason for deactivation:</p>
             <select
               value={selectedReason}
@@ -134,17 +154,17 @@ export default function TicketClerks() {
             </select>
             <div className="popup-actions">
               <button onClick={() => setShowPopup(false)}>Cancel</button>
-              <button className="deactivate" onClick={handleSuspend}>Deactivate</button>
+              <button className="deactivate" onClick={handleDeactivate}>Deactivate</button>
             </div>
           </div>
         </div>
       )}
 
-      {showActivatePopup && selectedAccount && selectedAccount.status === "deactivated" && (
+      {showActivatePopup && selectedAdmin && (
         <div className="popup-overlay">
           <div className="popup-content">
-            <h3>Activate {selectedAccount.name}?</h3>
-            <p>Are you sure you want to activate this account?</p>
+            <h3>Activate {selectedAdmin.name}?</h3>
+            <p>Are you sure you want to activate this admin?</p>
             <div className="popup-actions">
               <button onClick={() => setShowActivatePopup(false)}>Cancel</button>
               <button className="activate" onClick={handleActivate}>Activate</button>
@@ -154,4 +174,6 @@ export default function TicketClerks() {
       )}
     </div>
   );
-}
+};
+
+export default Admins;

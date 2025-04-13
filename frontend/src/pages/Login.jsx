@@ -4,6 +4,7 @@ import { post } from '../services/ApiEndpoint'
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux'
 import { SetUser } from '../redux/AuthSlice';
+import logo from '../../src/assets/imgs/logo-white.png'
 import '../styles/Login.css'
 
 export default function Login() {
@@ -24,7 +25,9 @@ export default function Login() {
       const response = request.data 
 
       if (request.status == 200) {
-        if (response.user.role == 'admin') {
+        if (response.user.role == 'super admin') {
+          navigate('/super-admin')
+        } else if (response.user.role == 'admin') {
           navigate('/admin')
         } else if (response.user.role == 'ticket clerk') {
           navigate('/')
@@ -40,6 +43,7 @@ export default function Login() {
 
   return (
     <>
+    <div className='container'>
       <div className='login-container'>
         <h1>Welcome Back</h1>
         <p>lorem text text huhu yeah yeah omgomg</p>
@@ -80,6 +84,10 @@ export default function Login() {
           <button type='submit'>Login</button>
         </form>
       </div>
+      <div className='logo'>
+        <img src={logo} alt="logo" />
+      </div>
+    </div>
     </>
   )
 }

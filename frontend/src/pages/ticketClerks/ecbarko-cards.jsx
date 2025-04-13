@@ -18,7 +18,7 @@ export default function EcBarkoCard() {
       cardNumber: "1234-5678-9102",
       balance: "₱0.00",
       type: "Type 2",
-      status: "suspended",
+      status: "deactivated",
       lastActive: "2025-02-18",
     },
     {
